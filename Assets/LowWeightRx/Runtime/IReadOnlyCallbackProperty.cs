@@ -6,7 +6,7 @@ namespace MbsCore.LowWeightRx
     {
         TValue Value { get; }
         
-        IDisposable AddListener(Action<TValue> callback, bool isRise = false);
-        void RemoveListener(Action<TValue> callback);
+        IDisposable Subscribe(Action<TValue> callback, bool skipLastValue = true);
+        void Unsubscribe(Action<TValue> callback);
     }
 }

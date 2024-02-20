@@ -2,20 +2,18 @@ using System;
 
 namespace MbsCore.LowWeightRx
 {
-    internal sealed class CallbackPropertyDisposableHandler<T> : IDisposable
+    internal sealed class CallbackPropertyDisposableHandler : IDisposable
     {
-        private readonly IReadOnlyCallbackProperty<T> _property;
-        private readonly Action<T> _callback;
+        private readonly Action _unsubscribe;
 
-        public CallbackPropertyDisposableHandler(IReadOnlyCallbackProperty<T> property, Action<T> callback)
+        public CallbackPropertyDisposableHandler(Action unsubscribe)
         {
-            _property = property;
-            _callback = callback;
+            _unsubscribe = unsubscribe;
         }
         
         public void Dispose()
         {
-            _property.RemoveListener(_callback);
+            _unsubscribe?.Invoke();
         }
     }
 }

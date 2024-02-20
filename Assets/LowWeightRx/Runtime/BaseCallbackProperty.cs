@@ -13,18 +13,18 @@ namespace MbsCore.LowWeightRx
             Value = value;
         }
         
-        public IDisposable AddListener(Action<TValue> callback, bool isRise = false)
+        public IDisposable Subscribe(Action<TValue> callback, bool skipLastValue = true)
         {
             OnValueChanged += callback;
-            if (isRise)
+            if (!skipLastValue)
             {
                 callback?.Invoke(Value);
             }
 
-            return new CallbackPropertyDisposableHandler<TValue>(this, callback);
+            return new CallbackPropertyDisposableHandler(() => Unsubscribe(callback));
         }
 
-        public void RemoveListener(Action<TValue> callback)
+        public void Unsubscribe(Action<TValue> callback)
         {
             OnValueChanged -= callback;
         }
