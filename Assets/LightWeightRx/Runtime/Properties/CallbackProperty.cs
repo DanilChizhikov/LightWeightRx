@@ -1,4 +1,4 @@
-namespace MbsCore.LowWeightRx
+namespace MbsCore.LightWeightRx
 {
     public sealed class CallbackProperty<TValue> : BaseCallbackProperty<TValue>
     {

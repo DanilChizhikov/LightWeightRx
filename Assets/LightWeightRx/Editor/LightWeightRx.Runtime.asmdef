@@ -1,5 +1,5 @@
 {
-    "name": "LowWeightRx.Editor",
+    "name": "LightWeightRx.Editor",
     "rootNamespace": "MbsCore",
     "references": [
         "GUID:2dff218e4547740cfa02aacd859b058f"

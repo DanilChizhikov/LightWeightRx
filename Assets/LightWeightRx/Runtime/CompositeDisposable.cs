@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MbsCore.LowWeightRx
+namespace MbsCore.LightWeightRx
 {
     public sealed class CompositeDisposable : IDisposable
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LowWeightRx
+namespace MbsCore.LightWeightRx
 {
     internal sealed class CallbackPropertyDisposableHandler : IDisposable
     {

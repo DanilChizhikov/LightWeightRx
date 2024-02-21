@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MbsCore.LowWeightRx
+namespace MbsCore.LightWeightRx.Editor
 {
     [CustomPropertyDrawer(typeof(SerializedCallbackProperty<>), true)]
     internal sealed class SerializedCallbackPropertyDrawer : PropertyDrawer

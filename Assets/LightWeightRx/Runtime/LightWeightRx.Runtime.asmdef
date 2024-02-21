@@ -1,5 +1,5 @@
 {
-    "name": "LowWeightRx.Runtime",
+    "name": "LightWeightRx.Runtime",
     "rootNamespace": "MbsCore",
     "references": [],
     "includePlatforms": [],

@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LowWeightRx
+namespace MbsCore.LightWeightRx
 {
     public interface IReadOnlyCallbackProperty<TValue>
     {

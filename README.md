@@ -1,4 +1,4 @@
-# LowWeightRx
+# LightWeightRx
 ![](https://img.shields.io/badge/unity-2022.3+-000.svg)
 
 ## Description
@@ -18,14 +18,14 @@ Prerequisites:
 - [Unity](https://unity.com/releases/editor/archive) 2022.3+
 
 ### Install manually (using .unitypackage)
-1. Download the .unitypackage from [releases](https://github.com/DanilChizhikov/lowweightrx/releases/) page.
-2. Open LowWeightBehaviour.x.x.x.unitypackage
+1. Download the .unitypackage from [releases](https://github.com/DanilChizhikov/LightWeightRx/releases/) page.
+2. Open LightWeightRx.x.x.x.unitypackage
 
 ### Install via UPM (using Git URL)
 1. Navigate to your project's Packages folder and open the manifest.json file.
 2. Add this line below the "dependencies": { line
     - ```json title="Packages/manifest.json"
-      "com.danilchizhikov.lwrx": "https://github.com/DanilChizhikov/lowweightrx.git?path=Assets/LowWeightRx",
+      "com.danilchizhikov.lwrx": "https://github.com/DanilChizhikov/LightWeightRx.git?path=Assets/LightWeightRx",
       ```
 UPM should now install the package.
 
