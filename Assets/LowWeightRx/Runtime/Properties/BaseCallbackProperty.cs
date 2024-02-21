@@ -8,11 +8,6 @@ namespace MbsCore.LowWeightRx
         
         public abstract TValue Value { get; set; }
         
-        public BaseCallbackProperty(TValue value)
-        {
-            Value = value;
-        }
-        
         public IDisposable Subscribe(Action<TValue> callback)
         {
             IDisposable disposable = SkipLastValueSubscribe(callback);

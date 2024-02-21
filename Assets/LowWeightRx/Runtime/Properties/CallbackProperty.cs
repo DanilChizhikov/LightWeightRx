@@ -9,10 +9,12 @@ namespace MbsCore.LowWeightRx
             get => _value;
             set => TrySetValue(value);
         }
+
+        public CallbackProperty() : this(default) { }
         
-        public CallbackProperty(TValue value) : base(value)
+        public CallbackProperty(TValue value)
         {
-            _value = default;
+            _value = value;
         }
     }
 }

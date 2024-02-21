@@ -1,0 +1,23 @@
+{
+    "name": "com.danilchizhikov.lwrx",
+    "displayName": "Low Weight Reactivity",
+    "version": "0.0.1",
+    "unity": "2022.3",
+    "dependencies": {},
+    "description": "Low Weight Reactivity for Unity.",
+    "keywords": [
+      "Reactivity",
+      "Rx"
+    ],
+    "author": "MbsCore",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:DanilChizhikov/lowweightrx.git",
+        "directory": "com.danilchizhikov.lwrx"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/@DanilChizhikov"
+    },
+    "license": "MIT"
+  }
+  
