@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MbsCore.LightWeightRx
 {
-    public interface IReadOnlyCallbackList<TValue> : IReadOnlyCallbackCollection<TValue>, IReadOnlyList<TValue>
+    public interface IReadOnlyCallbackList<TValue> : IReadOnlyList<TValue>
     {
         IDisposable Subscribe(Action<IReadOnlyList<TValue>> callback);
         IDisposable SkipLastValueSubscribe(Action<IReadOnlyList<TValue>> callback);

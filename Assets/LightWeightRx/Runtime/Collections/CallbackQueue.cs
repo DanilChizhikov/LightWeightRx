@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MbsCore.LightWeightRx
 {
-    public sealed class CallbackQueue<TValue> : IReadOnlyCallbackCollection<TValue>, ICollection
+    public class CallbackQueue<TValue> : IReadOnlyCallbackCollection<TValue>, ICollection
     {
         private event Action<IReadOnlyCollection<TValue>> OnQueueChanged; 
         
@@ -87,6 +87,8 @@ namespace MbsCore.LightWeightRx
             SendCallbacks();
         }
 
+        public TValue[] ToArray() => _queue.ToArray();
+
         public IDisposable Subscribe(Action<IReadOnlyCollection<TValue>> callback)
         {
             IDisposable disposable = SkipLastValueSubscribe(callback);
@@ -105,7 +107,7 @@ namespace MbsCore.LightWeightRx
             OnQueueChanged -= callback;
         }
 
-        private void SendCallbacks()
+        protected void SendCallbacks()
         {
             OnQueueChanged?.Invoke(_queue);
         }

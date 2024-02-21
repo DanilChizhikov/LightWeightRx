@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MbsCore.LightWeightRx
 {
-    public sealed class CallbackHasSet<TValue> : IReadOnlyCallbackCollection<TValue>, ICollection<TValue>
+    public class CallbackHasSet<TValue> : IReadOnlyCallbackCollection<TValue>, ICollection<TValue>
     {
         private event Action<IReadOnlyCollection<TValue>> OnCollectionChanged; 
         
@@ -115,7 +115,7 @@ namespace MbsCore.LightWeightRx
             OnCollectionChanged -= callback;
         }
 
-        private void SendCallbacks()
+        protected void SendCallbacks()
         {
             OnCollectionChanged?.Invoke(_hashSet);
         }
