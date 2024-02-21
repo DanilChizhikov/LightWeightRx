@@ -18,7 +18,7 @@ namespace MbsCore.LightWeightRx
         public IDisposable SkipLastValueSubscribe(Action<TValue> callback)
         {
             OnValueChanged += callback;
-            return new CallbackPropertyDisposableHandler(() => Unsubscribe(callback));
+            return new CallbackDisposableHandler(() => Unsubscribe(callback));
         }
 
         public void Unsubscribe(Action<TValue> callback)

@@ -2,11 +2,11 @@ using System;
 
 namespace MbsCore.LightWeightRx
 {
-    internal sealed class CallbackPropertyDisposableHandler : IDisposable
+    internal sealed class CallbackDisposableHandler : IDisposable
     {
         private readonly Action _unsubscribe;
 
-        public CallbackPropertyDisposableHandler(Action unsubscribe)
+        public CallbackDisposableHandler(Action unsubscribe)
         {
             _unsubscribe = unsubscribe;
         }
