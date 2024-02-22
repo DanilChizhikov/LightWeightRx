@@ -11,7 +11,16 @@ namespace MbsCore.LightWeightRx
         public override TValue Value
         {
             get => _value;
-            set => TrySetValue(value);
+            set
+            {
+                if(!CanSetValue(value))
+                {
+                    return;
+                }
+
+                _value = value;
+                SendCallbacks();
+            }
         }
 
         public SerializedCallbackProperty() : this(default) { }

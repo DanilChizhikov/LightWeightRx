@@ -26,19 +26,18 @@ namespace MbsCore.LightWeightRx
             OnValueChanged -= callback;
         }
         
-        protected void TrySetValue(TValue value)
+        protected bool CanSetValue(TValue value)
         {
             if ((value == null && Value == null) ||
                 (value != null && value.Equals(Value)))
             {
-                return;
+                return false;
             }
-            
-            Value = value;
-            RiseCallbacks();
+
+            return true;
         }
         
-        private void RiseCallbacks()
+        protected void SendCallbacks()
         {
             OnValueChanged?.Invoke(Value);
         }
