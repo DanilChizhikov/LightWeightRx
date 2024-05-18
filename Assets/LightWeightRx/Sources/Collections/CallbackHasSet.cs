@@ -96,24 +96,6 @@ namespace MbsCore.LightWeightRx
         {
             return _hashSet.GetEnumerator();
         }
-        
-        public IDisposable Subscribe(Action<IReadOnlyCollection<TValue>> callback)
-        {
-            IDisposable disposable = SkipLastValueSubscribe(callback);
-            callback?.Invoke(_hashSet);
-            return disposable;
-        }
-
-        public IDisposable SkipLastValueSubscribe(Action<IReadOnlyCollection<TValue>> callback)
-        {
-            OnCollectionChanged += callback;
-            return new CallbackDisposableHandler(() => Unsubscribe(callback));
-        }
-
-        public void Unsubscribe(Action<IReadOnlyCollection<TValue>> callback)
-        {
-            OnCollectionChanged -= callback;
-        }
 
         protected void SendCallbacks()
         {

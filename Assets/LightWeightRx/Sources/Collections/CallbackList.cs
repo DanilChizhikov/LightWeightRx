@@ -182,24 +182,6 @@ namespace MbsCore.LightWeightRx
         }
 
         public TValue[] ToArray() => _list.ToArray();
-
-        public IDisposable Subscribe(Action<IReadOnlyList<TValue>> callback)
-        {
-            IDisposable disposable = SkipLastValueSubscribe(callback);
-            callback?.Invoke(_list);
-            return disposable;
-        }
-
-        public IDisposable SkipLastValueSubscribe(Action<IReadOnlyList<TValue>> callback)
-        {
-            OnListChanged += callback;
-            return new CallbackDisposableHandler(() => Unsubscribe(callback));
-        }
-
-        public void Unsubscribe(Action<IReadOnlyList<TValue>> callback)
-        {
-            OnListChanged -= callback;
-        }
         
         protected void SendCallbacks()
         {

@@ -8,8 +8,8 @@ namespace MbsCore.LightWeightRx
         private readonly IObserver<T> _observer;
 
         private CallbackProperty<T> _property;
-        
-        private ObserverNode<T> Previous { get; set; }
+
+        public ObserverNode<T> Previous { get; set; }
         public ObserverNode<T> Next { get; set; }
         
         public ObserverNode(CallbackProperty<T> property, IObserver<T> observer)

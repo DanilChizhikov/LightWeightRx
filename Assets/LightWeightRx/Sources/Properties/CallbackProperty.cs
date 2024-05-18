@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace MbsCore.LightWeightRx
 {
@@ -71,13 +72,41 @@ namespace MbsCore.LightWeightRx
 
         private void Notify()
         {
-            if (CurrentNode == null)
+            ObserverNode<TValue> root = CurrentNode;
+            if (root == null)
             {
                 return;
             }
-            
-            CurrentNode.OnNext(Value);
-            CurrentNode.OnCompleted();
+
+            TryNotify(root);
+            ObserverNode<TValue> node = Volatile.Read(ref root);
+            ObserverNode<TValue> last = node?.Previous;
+            while (node != null)
+            {
+                TryNotify(node);
+                if (node == last)
+                {
+                    return;
+                }
+                
+                node = node.Next;
+            }
+        }
+
+        private void TryNotify(ObserverNode<TValue> node)
+        {
+            try
+            {
+                node.OnNext(Value);
+            }
+            catch (Exception exception)
+            {
+                node.OnError(exception);
+            }
+            finally
+            {
+                node.OnCompleted();
+            }
         }
     }
 }
