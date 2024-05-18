@@ -13,7 +13,7 @@ namespace MbsCore.LightWeightRx.Tests
         }
 
         [Test]
-        public void Subscribe_To_Int_Property_And_Set_Value_Int_Max_New_Value_Not_Equal_Last_Value()
+        public void Set_Int_Max_Value_To_Property_After_Construct_And_Value_Should_Not_Be_Zero()
         {
             var property = new CallbackProperty<int>(0);
             property.Value = int.MaxValue;
