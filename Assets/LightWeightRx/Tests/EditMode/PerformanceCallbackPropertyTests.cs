@@ -8,7 +8,7 @@ namespace MbsCore.LightWeightRx.Tests
     public sealed class PerformanceCallbackPropertyTests
     {
         [Test, Performance]
-        public void Subscribe_Ten_Thousand_Times_Performance_Test()
+        public void Subscribe_One_Thousand_Times_Performance_Test()
         {
             using var scope = Measure.Scope();
             var property = new CallbackProperty<int>(0);

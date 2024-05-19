@@ -5,12 +5,68 @@
 This package is a lightweight implementation for reactive programming.
 
 ## Table of Contents
+- [Performance Tests](#Performance-Tests)
+    - [Simple Subscribes](#Simple-Subscribes) 
+    - [Subscribes With Set Value](#Subscribes-With-Set-Value) 
 - [Getting Started](#Getting-Started)
     - [Install manually (using .unitypackage)](#Install-manually-(using-.unitypackage))
     - [Install via UPM (using Git URL)](#Install-via-UPM-(using-Git-URL))
 - [How to use](#How-to-use)
     - [Usage examples](#Usage-examples)
 - [License](#License)
+
+## Performance Tests
+Testing Code:
+```csharp
+for (int i = 0; i < 1000; i++)
+{
+    int includedValue = int.MinValue;
+    property.Subscribe(value => includedValue = value);
+}
+```
+Result:
+```
+Output: 
+Time 5.10 Milliseconds
+Subscribe Group in Milliseconds
+Min:		0.00 ms
+Median:		0.00 ms
+Max:		0.01 ms
+Avg:		0.00 ms
+StdDev:		0.00 ms
+SampleCount:	999
+Sum:		0.85 ms
+First samples:	▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▃▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▃▁▁▁▁▁▁▁▁▄▁▁▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+```
+### Simple Subscribes
+### Subscribes With Set Value
+Testing code:
+```csharp
+for (int i = 0; i < 1000; i++)
+{
+    int includedValue = int.MinValue;
+    property.Subscribe(value => includedValue = value);
+}
+
+for(int i = 0; i < 1000; i++)
+{
+    property.Value = Random.Range(0, int.MaxValue);
+}
+```
+Result:
+```
+Output: 
+Time 28.19 Milliseconds
+Set Group in Milliseconds
+Min:		0.02 ms
+Median:		0.02 ms
+Max:		0.08 ms
+Avg:		0.03 ms
+StdDev:		0.00 ms
+SampleCount:	999
+Sum:		25.04 ms
+First samples:	▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▄▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+```
 
 ## Getting Started
 Prerequisites:
