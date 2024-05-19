@@ -5,11 +5,11 @@ namespace MbsCore.LightWeightRx
 {
     public class CallbackProperty<TValue> : ICallbackProperty<TValue>
     {
-        private TValue _value;
+        private TValue _currentValue;
 
         public TValue Value
         {
-            get => _value;
+            get => _currentValue;
             set => SetValue(value);
         }
         
@@ -21,7 +21,7 @@ namespace MbsCore.LightWeightRx
 
         public CallbackProperty(TValue defaultValue)
         {
-            _value = defaultValue;
+            _currentValue = defaultValue;
         }
         
         public IDisposable Subscribe(IObserver<TValue> observer)
@@ -47,13 +47,19 @@ namespace MbsCore.LightWeightRx
             CurrentNode = value;
         }
         
+        protected ref TValue GetValueRef() => ref _currentValue;
+
+        protected virtual void ValueChanged(TValue value)
+        {
+        }
+        
         private void SetValue(TValue value)
         {
             lock (this)
             {
                 if (CanSetValue(value))
                 {
-                    _value = value;
+                    _currentValue = value;
                     Notify();
                 }
             }

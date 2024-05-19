@@ -4,28 +4,29 @@ using UnityEngine;
 namespace MbsCore.LightWeightRx
 {
     [Serializable]
-    public sealed class SerializedCallbackProperty<TValue> : ICallbackProperty<TValue>
+    public sealed class SerializedCallbackProperty<TValue> : CallbackProperty<TValue>, ISerializationCallbackReceiver
     {
-        private readonly ICallbackProperty<TValue> _internalProperty;
-        
         [SerializeField] private TValue _value;
 
-        public TValue Value => _internalProperty.Value;
-
-        public SerializedCallbackProperty() : this(default) { }
+        public SerializedCallbackProperty() : this(default!) { }
         
-        public SerializedCallbackProperty(TValue value)
+        public SerializedCallbackProperty(TValue value) : base(value)
         {
             _value = value;
-            _internalProperty = new CallbackProperty<TValue>(_value);
         }
-        
-        public IDisposable Subscribe(IObserver<TValue> observer)
+
+        protected override void ValueChanged(TValue value)
         {
-            lock (this)
-            {
-                return _internalProperty.Subscribe(observer);
-            }
+            _value = value;
+        }
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            GetValueRef() = _value;
         }
     }
 }
