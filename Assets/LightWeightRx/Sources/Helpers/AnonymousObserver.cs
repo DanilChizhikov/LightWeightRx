@@ -1,12 +1,13 @@
 using System;
+using UnityEngine;
 
 namespace MbsCore.LightWeightRx
 {
-    internal sealed class CallbackHandler<T> : IObserver<T>
+    internal sealed class AnonymousObserver<T> : IObserver<T>
     {
         private readonly Action<T> _callback;
 
-        public CallbackHandler(Action<T> callback)
+        public AnonymousObserver(Action<T> callback)
         {
             _callback = callback;
         }
@@ -17,6 +18,7 @@ namespace MbsCore.LightWeightRx
 
         public void OnError(Exception error)
         {
+            Debug.LogError(error);
         }
 
         public void OnNext(T value)
