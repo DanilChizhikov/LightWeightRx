@@ -4,11 +4,11 @@ namespace MbsCore.LightWeightRx
 {
     internal sealed class CallbackHandler<T> : IObserver<T>
     {
-        private readonly Action<T> _unsubscribe;
+        private readonly Action<T> _callback;
 
-        public CallbackHandler(Action<T> unsubscribe)
+        public CallbackHandler(Action<T> callback)
         {
-            _unsubscribe = unsubscribe;
+            _callback = callback;
         }
 
         public void OnCompleted()
@@ -21,7 +21,7 @@ namespace MbsCore.LightWeightRx
 
         public void OnNext(T value)
         {
-            _unsubscribe.Invoke(value);
+            _callback.Invoke(value);
         }
     }
 }
