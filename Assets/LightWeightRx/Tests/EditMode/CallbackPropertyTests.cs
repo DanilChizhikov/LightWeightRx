@@ -73,14 +73,22 @@ namespace MbsCore.LightWeightRx.Tests
             composite.Dispose();
             
             property.Value = 1;
-            if (result1 == int.MinValue && result2 == int.MinValue)
+            Assert.AreEqual(result1, int.MinValue);
+            Assert.AreEqual(result2, int.MinValue);
+        }
+        
+        [Test]
+        public void Subscribe_With_Skip_LastValue_And_Values_Should_Not_Be_Equals()
+        {
+            int result = int.MinValue;
+            var property = new CallbackProperty<int>(result);
+            property.Value = int.MaxValue;
+            property.SubscribeSkipLastValue(value =>
             {
-                Assert.Pass();
-            }
-            else
-            {
-                Assert.Fail();
-            }
+                result = value;
+            });
+            
+            Assert.AreNotEqual(result, property.Value);
         }
     }
 }
