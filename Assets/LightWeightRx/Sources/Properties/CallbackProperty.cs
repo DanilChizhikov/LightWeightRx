@@ -66,6 +66,7 @@ namespace MbsCore.LightWeightRx
                 if (CanSetValue(value))
                 {
                     _currentValue = value;
+                    ValueChanged(_currentValue);
                     Notify();
                 }
             }
@@ -89,24 +90,22 @@ namespace MbsCore.LightWeightRx
             {
                 return;
             }
-
-            TryNotify(root);
+            
             ObserverNode<TValue> node = Volatile.Read(ref root);
             ObserverNode<TValue> last = node?.Previous;
-            while (node != null)
+            for (; node != null; node = node.Next)
             {
                 TryNotify(node);
                 if (node == last)
                 {
-                    return;
+                    break;
                 }
-                
-                node = node.Next;
             }
         }
 
         private void TryNotify(ObserverNode<TValue> node)
         {
+            bool wasException = false;
             try
             {
                 node.OnNext(Value);
@@ -114,10 +113,14 @@ namespace MbsCore.LightWeightRx
             catch (Exception exception)
             {
                 node.OnError(exception);
+                wasException = true;
             }
             finally
             {
-                node.OnCompleted();
+                if (!wasException)
+                {
+                    node.OnCompleted();
+                }
             }
         }
     }
