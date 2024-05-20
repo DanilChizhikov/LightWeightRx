@@ -1,6 +1,8 @@
+using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MbsCore.LightWeightRx.Tests
 {
@@ -33,6 +35,28 @@ namespace MbsCore.LightWeightRx.Tests
                 }).WarmupCount(10)
                 .MeasurementCount(999)
                 .SampleGroup($"Set Group")
+                .Run();
+        }
+
+        [Test, Performance]
+        public void Test_List_One_Thousand_Times_Value_Performance_Test()
+        {
+            var list = new List<Action<int>>();
+            for (int i = 0; i < 1000; i++)
+            {
+                int inclidedValue = int.MinValue;
+                list.Add(value => inclidedValue = value);
+            }
+            
+            using var scope = Measure.Scope();
+            Measure.Method(() =>
+                {
+                    for (int i = 0; i < 1000; i++)
+                    {
+                        list[i](Random.Range(0, int.MaxValue));
+                    }
+                }).WarmupCount(10)
+                .MeasurementCount(999)
                 .Run();
         }
 

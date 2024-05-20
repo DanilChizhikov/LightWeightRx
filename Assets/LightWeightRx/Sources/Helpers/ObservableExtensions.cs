@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Events;
 
 namespace MbsCore.LightWeightRx
 {
@@ -11,14 +10,18 @@ namespace MbsCore.LightWeightRx
             return property.Subscribe(handler);
         }
         
-        public static IDisposable SubscribeUnity<T>(this IObservable<T> property, UnityAction<T> callback)
+        public static IObservable<T> Skip<T>(this IObservable<T> source, int count = 1)
         {
-            var handler = new AnonymousObserver<T>(value =>
+            ThrowIfInvalidCount(count, 0);
+            return new CountableSkipObservable<T>(source, count);
+        }
+        
+        private static void ThrowIfInvalidCount(int count, int minValue)
+        {
+            if (count < minValue)
             {
-                callback?.Invoke(value);
-            });
-            
-            return property.Subscribe(handler);
+                throw new ArgumentOutOfRangeException("count");
+            }
         }
     }
 }
