@@ -26,15 +26,9 @@ namespace MbsCore.LightWeightRx
         
         public IDisposable Subscribe(IObserver<TValue> observer)
         {
-            observer.OnNext(Value);
-            IDisposable disposable = SubscribeSkipLastValue(observer);
-            return disposable;
-        }
-        
-        public IDisposable SubscribeSkipLastValue(IObserver<TValue> observer)
-        {
             lock (this)
             {
+                observer.OnNext(Value);
                 var node = new ObserverNode<TValue>(this, observer);
                 return node;
             }

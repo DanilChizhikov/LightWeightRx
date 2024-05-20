@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using Random = UnityEngine.Random;
 
 namespace MbsCore.LightWeightRx.Tests
 {
@@ -83,12 +84,27 @@ namespace MbsCore.LightWeightRx.Tests
             int result = int.MinValue;
             var property = new CallbackProperty<int>(result);
             property.Value = int.MaxValue;
-            property.SubscribeSkipLastValue(value =>
+            property.Skip().Subscribe(value =>
             {
                 result = value;
             });
             
             Assert.AreNotEqual(result, property.Value);
+        }
+
+        [Test]
+        public void Subscribe_With_Skip_LastValue_And_Update_Value_Values_Should_Be_Equals()
+        {
+            int result = int.MinValue;
+            var property = new CallbackProperty<int>(result);
+            property.Value = int.MaxValue;
+            property.Skip().Subscribe(value =>
+            {
+                result = value;
+            });
+
+            property.Value = Random.Range(int.MinValue, int.MaxValue);
+            Assert.AreEqual(result, property.Value);
         }
     }
 }

@@ -115,7 +115,9 @@ public class Entity : IDisposable
         //With such a subscription, the last assigned value to the field will be called immediately after the subscription
         _speedDisposable = example.Speed.Subscribe(SpeedChangedCallback);
         //With such a subscription, the last assigned value to the field will not be called immediately after the subscription
-        _speedDisposable = example.Speed.SkipLastValueSubscribe(SpeedChangedCallback);
+        _speedDisposable = example.Speed.Skip().Subscribe(SpeedChangedCallback);
+        //With such a subscription, the last and (n-1) number of field updates will not be called in this case
+        _speedDisposable = example.Speed.Skip(2).Subscribe(SpeedChangedCallback);
     }
 
     public void Dispose()
