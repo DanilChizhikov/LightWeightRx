@@ -1,7 +1,7 @@
 {
     "name": "com.danilchizhikov.lwrx",
     "displayName": "Light Weight Reactivity",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "unity": "2022.3",
     "dependencies": {},
     "description": "Light Weight Reactivity for Unity.",
