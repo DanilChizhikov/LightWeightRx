@@ -113,5 +113,12 @@ namespace MbsCore.LightWeightRx.Tests
             var property = new CallbackProperty<TestableReferenceClass>(new TestableReferenceClass());
             property.Value = null;
         }
+        
+        [Test]
+        public void Set_ReferenceType_Value_With_Null_Equality_Comparer_Should_Not_Throw_Exception_When_Set_NullRef()
+        {
+            var property = new CallbackProperty<TestableReferenceClass>(new TestableReferenceClass(), null);
+            property.Value = null;
+        }
     }
 }
