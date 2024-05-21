@@ -106,5 +106,12 @@ namespace MbsCore.LightWeightRx.Tests
             property.Value = Random.Range(int.MinValue, int.MaxValue);
             Assert.AreEqual(result, property.Value);
         }
+
+        [Test]
+        public void Set_ReferenceType_Value_With_Default_Equality_Comparer_Should_Not_Throw_Exception_When_Set_NullRef()
+        {
+            var property = new CallbackProperty<TestableReferenceClass>(new TestableReferenceClass());
+            property.Value = null;
+        }
     }
 }
