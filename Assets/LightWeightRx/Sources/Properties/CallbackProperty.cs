@@ -6,7 +6,7 @@ namespace MbsCore.LightWeightRx
 {
     public class CallbackProperty<TValue> : ICallbackProperty<TValue>
     {
-        private readonly Predicate<TValue> _equalityPredicate;
+        private readonly IEqualityComparer<TValue> _equalityComparer;
         
         private TValue _currentValue;
 
@@ -29,7 +29,7 @@ namespace MbsCore.LightWeightRx
         public CallbackProperty(TValue defaultValue, IEqualityComparer<TValue> equalityComparer)
         {
             _currentValue = defaultValue;
-            _equalityPredicate = equalityComparer != null ? value => equalityComparer.Equals(value, defaultValue) : DefaultEqualityPredicate;
+            _equalityComparer = equalityComparer ?? new DefaultEqualityComparer<TValue>();
         }
         
         public IDisposable Subscribe(IObserver<TValue> observer)
@@ -74,13 +74,7 @@ namespace MbsCore.LightWeightRx
             }
         }
 
-        private bool CanSetValue(TValue value) => !_equalityPredicate.Equals(value);
-
-        private bool DefaultEqualityPredicate(TValue newValue)
-        {
-            return (newValue == null && Value == null) ||
-                   (newValue != null && newValue.Equals(Value));
-        }
+        private bool CanSetValue(TValue value) => !_equalityComparer.Equals(value);
 
         private void Notify()
         {
