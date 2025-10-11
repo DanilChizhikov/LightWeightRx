@@ -1,19 +1,21 @@
 {
-    "name": "com.danilchizhikov.lwrx",
+    "name": "com.dtech.lwrx",
     "displayName": "Light Weight Reactivity",
-    "version": "1.1.2",
+    "version": "0.1.0",
     "unity": "2022.3",
-    "dependencies": {},
+    "dependencies": {
+      "com.unity.test-framework.performance": "3.2.0"
+    },
     "description": "Light Weight Reactivity for Unity.",
     "keywords": [
       "Reactivity",
       "Rx"
     ],
-    "author": "MbsCore",
+    "author": "DTech",
     "repository": {
         "type": "git",
         "url": "git@github.com:DanilChizhikov/LightWeightRx.git",
-        "directory": "com.danilchizhikov.lwrx"
+        "directory": "com.dtech.lwrx"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/@DanilChizhikov"

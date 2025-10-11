@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public interface IReadOnlyCallbackProperty<TValue> : IObservable<TValue>
     {

@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace MbsCore.LightWeightRx.Tests
+namespace DTech.LightWeightRx.Tests.PlayMode
 {
     [TestFixture]
     public sealed class CallbackPropertyTests

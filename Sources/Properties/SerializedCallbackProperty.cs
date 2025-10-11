@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     [Serializable]
     public sealed class SerializedCallbackProperty<TValue> : CallbackProperty<TValue>, ISerializationCallbackReceiver

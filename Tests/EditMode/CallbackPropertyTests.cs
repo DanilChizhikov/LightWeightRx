@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Random = UnityEngine.Random;
 
-namespace MbsCore.LightWeightRx.Tests
+namespace DTech.LightWeightRx.Tests.EditMode
 {
     [TestFixture]
     public sealed class CallbackPropertyTests

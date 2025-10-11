@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public class CallbackProperty<TValue> : ICallbackProperty<TValue>
     {

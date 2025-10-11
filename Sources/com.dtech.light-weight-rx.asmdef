@@ -1,6 +1,6 @@
 {
-    "name": "LightWeightRx",
-    "rootNamespace": "MbsCore",
+    "name": "com.dtech.light-weight-rx",
+    "rootNamespace": "DTech",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

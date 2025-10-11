@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MbsCore.LightWeightRx.Tests
+namespace DTech.LightWeightRx.Tests.PlayMode
 {
     internal sealed class SerializedCallbackPropertyTest : MonoBehaviour
     {

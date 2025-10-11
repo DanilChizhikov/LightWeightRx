@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public abstract class SkipObserver<T> : IObserver<T>, IDisposable
     {

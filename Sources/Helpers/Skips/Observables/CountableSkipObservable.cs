@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public sealed class CountableSkipObservable<T> : SkipObservable<T, CountableSkipObserver<T>>
     {

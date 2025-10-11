@@ -1,4 +1,4 @@
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public interface ICallbackProperty<TValue> : IReadOnlyCallbackProperty<TValue>
     {

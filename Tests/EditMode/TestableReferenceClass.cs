@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LightWeightRx.Tests
+namespace DTech.LightWeightRx.Tests.EditMode
 {
     public class TestableReferenceClass
     {

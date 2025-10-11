@@ -1,5 +1,6 @@
 # LightWeightRx
 ![](https://img.shields.io/badge/unity-2022.3+-000.svg)
+![Tests](https://img.shields.io/badge/Tests-Passed-brightgreen.svg)
 
 ## Description
 This package is a lightweight implementation for reactive programming.
@@ -81,9 +82,13 @@ Prerequisites:
 1. Navigate to your project's Packages folder and open the manifest.json file.
 2. Add this line below the "dependencies": { line
     - ```json title="Packages/manifest.json"
-      "com.danilchizhikov.lwrx": "https://github.com/DanilChizhikov/LightWeightRx.git?path=Assets/LightWeightRx",
+      "com.dtech.lwrx": "https://github.com/DanilChizhikov/LightWeightRx.git",
       ```
-UPM should now install the package.
+3. UPM should now install the package.
+
+If you want to set a target version, LightWeightRx uses the `v*.*.*` release tag so you can specify a version like #v0.1.0.
+
+For example `https://github.com/DanilChizhikov/LightWeightRx.git#v0.1.0`.
 
 ## How to use
 You can use both conventional implementations and special serialized ones.
@@ -174,6 +179,8 @@ public class Example : MonoBehaviour
 }
 ```
 
-## License
+## Dependencies
+- [Performance testing API](https://docs.unity3d.com/Packages/com.unity.test-framework.performance@3.2/manual/index.html) 3.2+
 
-MIT
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

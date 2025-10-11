@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     internal sealed class DefaultEqualityComparer<T> : IEqualityComparer<T>
     {

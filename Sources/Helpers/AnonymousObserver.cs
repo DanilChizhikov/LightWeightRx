@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     internal sealed class AnonymousObserver<T> : IObserver<T>
     {

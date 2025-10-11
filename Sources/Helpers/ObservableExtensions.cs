@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public static class ObservableExtensions
     {

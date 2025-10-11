@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Unity.PerformanceTesting;
 using Random = UnityEngine.Random;
 
-namespace MbsCore.LightWeightRx.Tests
+namespace DTech.LightWeightRx.Tests.EditMode
 {
     [TestFixture]
     public sealed class PerformanceCallbackPropertyTests

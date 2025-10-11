@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public abstract class TimeSkipObservable<T> : SkipObservable<T, TimeSkipObserver<T>>
     {

@@ -1,6 +1,6 @@
 {
-    "name": "LightWeightRx.Editor",
-    "rootNamespace": "MbsCore",
+    "name": "com.dtech.light-weight-rx.editor",
+    "rootNamespace": "DTech",
     "references": [
         "GUID:2dff218e4547740cfa02aacd859b058f"
     ],

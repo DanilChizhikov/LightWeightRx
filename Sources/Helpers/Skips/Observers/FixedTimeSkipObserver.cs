@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public sealed class FixedTimeSkipObserver<T> : TimeSkipObserver<T>
     {

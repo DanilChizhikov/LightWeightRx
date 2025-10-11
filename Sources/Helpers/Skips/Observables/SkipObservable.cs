@@ -1,6 +1,6 @@
 using System;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     public abstract class SkipObservable<T, TObserver> : IObservable<T>
         where TObserver : IObserver<T>

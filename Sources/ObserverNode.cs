@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace MbsCore.LightWeightRx
+namespace DTech.LightWeightRx
 {
     internal sealed class ObserverNode<T> : IObserver<T>, IDisposable
     {
